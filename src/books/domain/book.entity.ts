@@ -21,7 +21,7 @@ export class Book {
   isbn: string;
 
   @Column({ nullable: true })
-  publishDate: Date;
+  publishYear: number;
 
   @Column({ type: 'varchar', length: 100, nullable: true })
   publisher: string;
@@ -41,8 +41,8 @@ export class Book {
     return this;
   }
 
-  withPublishDate(publishDate: Date) {
-    this.publishDate = publishDate;
+  withPublishYear(publishYear: number) {
+    this.publishYear = publishYear;
     return this;
   }
 

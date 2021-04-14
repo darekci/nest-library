@@ -16,7 +16,7 @@ export class BookDto {
   isbn: string;
 
   @ApiProperty()
-  publishDate: Date;
+  publishYear: number;
 
   @ApiProperty()
   publisher: string;

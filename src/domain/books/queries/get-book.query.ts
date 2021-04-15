@@ -1,7 +1,7 @@
-import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { Book } from "../domain/book.entity";
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Book } from '../book.entity';
 
 export class GetBookQuery {
   constructor(public readonly id: number) {}

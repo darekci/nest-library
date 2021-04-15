@@ -1,4 +1,4 @@
-import {ConnectionOptions} from 'typeorm';
+import { ConnectionOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
 
 // You can load you .env file here synchronously using dotenv package (not installed here),
@@ -8,7 +8,6 @@ import * as dotenv from 'dotenv';
 // const data: any = dotenv.parse(fs.readFileSync(`${environment}.env`));
 // You can also make a singleton service that load and expose the .env file content.
 // ...
-
 
 dotenv.config();
 

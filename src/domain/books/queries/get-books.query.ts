@@ -1,11 +1,9 @@
-import { IQueryHandler, QueryHandler } from "@nestjs/cqrs";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
-import { Book } from "../domain/book.entity";
+import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Book } from '../book.entity';
 
-export class GetBooksQuery {
-  constructor() {}
-}
+export class GetBooksQuery {}
 
 @QueryHandler(GetBooksQuery)
 export class GetBooksHandler implements IQueryHandler<GetBooksQuery> {

@@ -1,7 +1,6 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Book } from '../book.entity';
+import { IBookRepository } from '../book-repository.interface';
+import { Book } from '../book';
 
 export class CreateBookCommand {
   constructor(public readonly book: Book) {}
@@ -9,12 +8,9 @@ export class CreateBookCommand {
 
 @CommandHandler(CreateBookCommand)
 export class CreateBookHandler implements ICommandHandler<CreateBookCommand> {
-  constructor(
-    @InjectRepository(Book)
-    private repository: Repository<Book>
-  ) {}
+  constructor(private repository: IBookRepository) {}
 
   async execute(command: CreateBookCommand): Promise<void> {
-    this.repository.insert(command.book);
+    this.repository.create(command.book);
   }
 }

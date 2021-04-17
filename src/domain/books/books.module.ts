@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Book } from './book.entity';
+import { BookRepository } from 'src/persistence/books/book-repository/book-repository';
+import { IBookRepository } from './book-repository.interface';
 import { CreateBookHandler } from './commands/create-book.command';
 import { DeleteBookHandler } from './commands/delete-book.command';
 import { UpdateBookHandler } from './commands/update-book.command';
@@ -16,8 +16,13 @@ export const CommandHandlers = [
 ];
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Book])],
-  exports: [GetBooksHandler],
-  providers: [...QueryHandlers, ...CommandHandlers],
+  providers: [
+    ...QueryHandlers,
+    ...CommandHandlers,
+    {
+      provide: IBookRepository,
+      useClass: BookRepository,
+    },
+  ],
 })
 export class BooksModule {}

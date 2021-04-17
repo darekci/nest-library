@@ -1,29 +1,20 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
-@Entity()
 export class Book {
-  private bookEntity: void;
+  private bookDomain: void;
 
   constructor(id?: number) {
     this.id = id;
   }
 
-  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar', length: 100 })
   author: string;
 
-  @Column({ type: 'varchar', length: 300 })
   title: string;
 
-  @Column({ type: 'varchar', length: 30, nullable: true })
   isbn: string;
 
-  @Column({ nullable: true })
   publishYear: number;
 
-  @Column({ type: 'varchar', length: 100, nullable: true })
   publisher: string;
 
   withAuthor(author: string): Book {
@@ -31,22 +22,22 @@ export class Book {
     return this;
   }
 
-  withTitle(title: string) {
+  withTitle(title: string): Book {
     this.title = title;
     return this;
   }
 
-  withIsbn(isbn: string) {
+  withIsbn(isbn: string): Book {
     this.isbn = isbn;
     return this;
   }
 
-  withPublishYear(publishYear: number) {
+  withPublishYear(publishYear: number): Book {
     this.publishYear = publishYear;
     return this;
   }
 
-  withPublisher(publisher: string) {
+  withPublisher(publisher: string): Book {
     this.publisher = publisher;
     return this;
   }

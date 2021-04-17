@@ -1,35 +1,15 @@
-[2021-04-14T16:15:24.813Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'library' AND `TABLE_NAME` = 'migrations'
-[2021-04-14T16:15:24.829Z][QUERY]: CREATE TABLE `library`.`migrations` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
-[2021-04-14T16:15:24.929Z][QUERY]: SELECT * FROM `library`.`migrations` `migrations` ORDER BY `id` DESC
-[2021-04-14T16:15:24.935Z]0 migrations are already loaded in the database.
-[2021-04-14T16:15:24.936Z]1 migrations were found in the source code.
-[2021-04-14T16:15:24.936Z]1 migrations are new migrations that needs to be executed.
-[2021-04-14T16:15:24.937Z][QUERY]: START TRANSACTION
-[2021-04-14T16:15:24.941Z][QUERY]: CREATE TABLE `book` (`id` int NOT NULL AUTO_INCREMENT, `author` varchar(100) NOT NULL, `title` varchar(300) NOT NULL, `isbn` varchar(30) NULL, `publishYear` int NULL, `publisher` varchar(100) NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
-[2021-04-14T16:15:25.014Z][QUERY]: INSERT INTO `library`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1618327317917,"BookTable1618327317917"]
-[2021-04-14T16:15:25.032Z]Migration BookTable1618327317917 has been executed successfully.
-[2021-04-14T16:15:25.032Z][QUERY]: COMMIT
-[2021-04-14T16:32:37.918Z][QUERY]: INSERT INTO `book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, DEFAULT, DEFAULT, DEFAULT) -- PARAMETERS: ["Stephen King","To"]
-[2021-04-14T16:40:08.042Z][QUERY]: INSERT INTO `book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, ?, ?) -- PARAMETERS: ["Stephen King","To","12345678",2020,"Prószyński"]
-[2021-04-14T16:41:55.831Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book` WHERE `Book`.`id` IN (?) -- PARAMETERS: [1]
-[2021-04-14T16:41:55.852Z][QUERY]: UPDATE `book` SET `id` = ?, `author` = ?, `title` = ?, `isbn` = ?, `publishYear` = ?, `publisher` = ? WHERE `id` IN (?) -- PARAMETERS: [1,"Stephen King","To","12345678",2020,"Prószyński",1]
-[2021-04-14T16:49:50.623Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book` WHERE `Book`.`id` IN (?) -- PARAMETERS: ["1"]
-[2021-04-14T16:49:55.600Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book`
-[2021-04-15T16:50:44.592Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book`
-[2021-04-15T16:50:54.349Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book` WHERE `Book`.`id` IN (?) -- PARAMETERS: ["2"]
-[2021-04-15T16:50:54.359Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book` WHERE `Book`.`id` IN (?) -- PARAMETERS: [2]
-[2021-04-15T16:50:54.379Z][QUERY]: START TRANSACTION
-[2021-04-15T16:50:54.390Z][QUERY]: DELETE FROM `book` WHERE `id` = ? -- PARAMETERS: [2]
-[2021-04-15T16:50:54.407Z][QUERY]: COMMIT
-[2021-04-15T16:51:00.207Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book`
-[2021-04-15T16:51:30.842Z][QUERY]: INSERT INTO `book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, ?, ?) -- PARAMETERS: ["Alexander Freed","Alphabet Squadron","00000000",2019,"Del Rey"]
-[2021-04-15T16:51:35.316Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book`
-[2021-04-15T16:52:23.954Z][QUERY]: INSERT INTO `book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, ?, ?) -- PARAMETERS: [123,"Alphabet Squadron","00000000",2019,"Del Rey"]
-[2021-04-15T16:52:28.635Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book`
-[2021-04-15T16:52:41.592Z][QUERY]: INSERT INTO `book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, ?, ?) -- PARAMETERS: [123,"Alphabet Squadron","00000000","qweqwewq","Del Rey"]
-[2021-04-15T16:52:41.608Z][FAILED QUERY]: INSERT INTO `book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, ?, ?) -- PARAMETERS: [123,"Alphabet Squadron","00000000","qweqwewq","Del Rey"]
-[2021-04-15T16:52:41.608Z][QUERY ERROR]: Error: Incorrect integer value: 'qweqwewq' for column 'publishYear' at row 1
-[2021-04-15T16:52:48.745Z][QUERY]: SELECT `Book`.`id` AS `Book_id`, `Book`.`author` AS `Book_author`, `Book`.`title` AS `Book_title`, `Book`.`isbn` AS `Book_isbn`, `Book`.`publishYear` AS `Book_publishYear`, `Book`.`publisher` AS `Book_publisher` FROM `book` `Book`
-[2021-04-15T16:52:57.957Z][QUERY]: INSERT INTO `book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, ?, ?) -- PARAMETERS: [123,"Alphabet Squadron","00000000","qweqwewq","Del Rey"]
-[2021-04-15T16:52:57.970Z][FAILED QUERY]: INSERT INTO `book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, ?, ?) -- PARAMETERS: [123,"Alphabet Squadron","00000000","qweqwewq","Del Rey"]
-[2021-04-15T16:52:57.970Z][QUERY ERROR]: Error: Incorrect integer value: 'qweqwewq' for column 'publishYear' at row 1
+[2021-04-17T16:53:10.372Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'library' AND `TABLE_NAME` = 'migrations'
+[2021-04-17T16:53:10.389Z][QUERY]: CREATE TABLE `library`.`migrations` (`id` int NOT NULL AUTO_INCREMENT, `timestamp` bigint NOT NULL, `name` varchar(255) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2021-04-17T16:53:10.433Z][QUERY]: SELECT * FROM `library`.`migrations` `migrations` ORDER BY `id` DESC
+[2021-04-17T16:53:10.440Z]0 migrations are already loaded in the database.
+[2021-04-17T16:53:10.441Z]1 migrations were found in the source code.
+[2021-04-17T16:53:10.441Z]1 migrations are new migrations that needs to be executed.
+[2021-04-17T16:53:10.442Z][QUERY]: START TRANSACTION
+[2021-04-17T16:53:10.445Z][QUERY]: CREATE TABLE `Book` (`id` int NOT NULL AUTO_INCREMENT, `author` varchar(100) NOT NULL, `title` varchar(300) NOT NULL, `isbn` varchar(30) NULL, `publishYear` int NULL, `publisher` varchar(100) NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2021-04-17T16:53:10.489Z][QUERY]: INSERT INTO `library`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1618677904872,"BookTable1618677904872"]
+[2021-04-17T16:53:10.497Z]Migration BookTable1618677904872 has been executed successfully.
+[2021-04-17T16:53:10.499Z][QUERY]: COMMIT
+[2021-04-17T16:53:38.366Z][QUERY]: INSERT INTO `Book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, DEFAULT, ?) -- PARAMETERS: ["string","string","string","string"]
+[2021-04-17T16:53:43.121Z][QUERY]: SELECT `BookEntity`.`id` AS `BookEntity_id`, `BookEntity`.`author` AS `BookEntity_author`, `BookEntity`.`title` AS `BookEntity_title`, `BookEntity`.`isbn` AS `BookEntity_isbn`, `BookEntity`.`publishYear` AS `BookEntity_publishYear`, `BookEntity`.`publisher` AS `BookEntity_publisher` FROM `Book` `BookEntity`
+[2021-04-17T17:48:21.081Z][QUERY]: INSERT INTO `Book`(`id`, `author`, `title`, `isbn`, `publishYear`, `publisher`) VALUES (DEFAULT, ?, ?, ?, DEFAULT, ?) -- PARAMETERS: ["string","string","string","string"]
+[2021-04-17T17:48:25.750Z][QUERY]: SELECT `BookEntity`.`id` AS `BookEntity_id`, `BookEntity`.`author` AS `BookEntity_author`, `BookEntity`.`title` AS `BookEntity_title`, `BookEntity`.`isbn` AS `BookEntity_isbn`, `BookEntity`.`publishYear` AS `BookEntity_publishYear`, `BookEntity`.`publisher` AS `BookEntity_publisher` FROM `Book` `BookEntity`

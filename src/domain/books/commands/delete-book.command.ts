@@ -1,7 +1,5 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Book } from '../book.entity';
+import { IBookRepository } from '../book-repository.interface';
 
 export class DeleteBookCommand {
   constructor(public readonly id: number) {}
@@ -9,18 +7,9 @@ export class DeleteBookCommand {
 
 @CommandHandler(DeleteBookCommand)
 export class DeleteBookHandler implements ICommandHandler<DeleteBookCommand> {
-  constructor(
-    @InjectRepository(Book)
-    private repository: Repository<Book>
-  ) {}
+  constructor(private repository: IBookRepository) {}
 
   async execute(command: DeleteBookCommand): Promise<void> {
-    return this.repository.findOne(command.id).then((book) => {
-      if (!book) {
-        throw new Error('Book not found');
-      }
-
-      this.repository.remove(book);
-    });
+    await this.repository.delete(command.id);
   }
 }

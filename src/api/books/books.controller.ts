@@ -12,13 +12,13 @@ import { ApiBody } from '@nestjs/swagger';
 import { CreateBookCommand } from '../../domain/books/commands/create-book.command';
 import { DeleteBookCommand } from '../../domain/books/commands/delete-book.command';
 import { UpdateBookCommand } from '../../domain/books/commands/update-book.command';
-import { Book } from '../../domain/books/book.entity';
+import { Book } from '../../domain/books/book';
 import { GetBookQuery } from '../../domain/books/queries/get-book.query';
 import { GetBooksQuery } from '../../domain/books/queries/get-books.query';
 import { CreateBookDto } from './create-book.dto';
-import { CreateBookConverter } from 'src/utils/converters/books/create-book.converter';
 import { UpdateBookDto } from './update-book.dto';
-import { UpdateBookConverter } from 'src/utils/converters/books/update-book.converter';
+import { CreateBookService } from 'src/application/books/create-book.service';
+import { UpdateBookService } from 'src/application/books/update-book.service';
 
 @Controller('books')
 export class BooksController {
@@ -38,7 +38,7 @@ export class BooksController {
   @ApiBody({ type: CreateBookDto })
   async create(@Body() book: CreateBookDto): Promise<void> {
     return this.commandBus.execute(
-      new CreateBookCommand(CreateBookConverter.convert(book))
+      new CreateBookCommand(CreateBookService.prepare(book))
     );
   }
 
@@ -46,7 +46,7 @@ export class BooksController {
   @ApiBody({ type: UpdateBookDto })
   async update(@Body() book: UpdateBookDto): Promise<void> {
     return this.commandBus.execute(
-      new UpdateBookCommand(UpdateBookConverter.convert(book))
+      new UpdateBookCommand(UpdateBookService.convert(book))
     );
   }
 

@@ -2,6 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { BadRequestException, ValidationPipe } from '@nestjs/common';
+import { ValidationError } from 'class-validator';
 
 dotenv.config();
 
@@ -16,6 +18,14 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      exceptionFactory: (validationErrors: ValidationError[] = []) => {
+        return new BadRequestException(validationErrors);
+      },
+    })
+  );
 
   await app.listen(process.env.PORT);
 }

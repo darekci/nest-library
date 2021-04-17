@@ -1,7 +1,9 @@
+import { Injectable } from '@nestjs/common';
 import { UpdateBookDto } from 'src/api/books/update-book.dto';
-import { Book, createBook } from 'src/domain/books/book.entity';
+import { Book, createBook } from 'src/domain/books/book';
 
-export class UpdateBookConverter {
+@Injectable()
+export class UpdateBookService {
   static convert(dto: UpdateBookDto): Book {
     const entity = createBook(dto.id)
       .withAuthor(dto.author)

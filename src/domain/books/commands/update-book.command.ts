@@ -1,7 +1,6 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Book } from '../book.entity';
+import { Book } from '../book';
+import { IBookRepository } from '../book-repository.interface';
 
 export class UpdateBookCommand {
   constructor(public readonly book: Book) {}
@@ -9,18 +8,15 @@ export class UpdateBookCommand {
 
 @CommandHandler(UpdateBookCommand)
 export class UpdateBookHandler implements ICommandHandler<UpdateBookCommand> {
-  constructor(
-    @InjectRepository(Book)
-    private repository: Repository<Book>
-  ) {}
+  constructor(private repository: IBookRepository) {}
 
   async execute(command: UpdateBookCommand): Promise<void> {
-    const entity = await this.repository.findOne(command.book.id);
+    const entity = await this.repository.getBook(command.book.id);
 
     if (!entity) {
       throw new Error('Book does not exist');
     }
 
-    this.repository.update(entity.id, entity);
+    this.repository.update(command.book);
   }
 }

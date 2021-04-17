@@ -1,18 +1,14 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Book } from '../book.entity';
+import { BookEntity } from 'src/persistence/books/book-repository/book.entity';
+import { IBookRepository } from '../book-repository.interface';
 
 export class GetBooksQuery {}
 
 @QueryHandler(GetBooksQuery)
 export class GetBooksHandler implements IQueryHandler<GetBooksQuery> {
-  constructor(
-    @InjectRepository(Book)
-    private repository: Repository<Book>
-  ) {}
+  constructor(private repository: IBookRepository) {}
 
-  async execute() {
-    return this.repository.find();
+  async execute(): Promise<BookEntity[]> {
+    return this.repository.getBooks();
   }
 }

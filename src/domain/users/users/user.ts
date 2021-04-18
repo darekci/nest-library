@@ -40,3 +40,7 @@ export class User {
     return result;
   }
 }
+
+export function createUser(id?: number): User {
+  return new User(id);
+}

@@ -17,10 +17,9 @@ export class BookRepository implements IBookRepository {
     return this.manager.find(BookEntity);
   }
 
-  getBook(id: number): Promise<Book> {
-    return this.manager.findOne(BookEntity, id).then((entity) => {
-      return createBookFromEntity(entity);
-    });
+  async getBook(id: number): Promise<Book> {
+    const entity = await this.manager.findOne(BookEntity, id);
+    return createBookFromEntity(entity);
   }
 
   create(book: Book): void {

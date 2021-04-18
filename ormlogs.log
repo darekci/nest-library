@@ -32,3 +32,9 @@
 [2021-04-18T12:52:22.259Z][QUERY]: INSERT INTO `library`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1618750316238,"UserTable1618750316238"]
 [2021-04-18T12:52:22.272Z]Migration UserTable1618750316238 has been executed successfully.
 [2021-04-18T12:52:22.273Z][QUERY]: COMMIT
+[2021-04-18T15:38:41.282Z][QUERY]: SELECT `UserEntity`.`id` AS `UserEntity_id`, `UserEntity`.`fullName` AS `UserEntity_fullName`, `UserEntity`.`number` AS `UserEntity_number`, `UserEntity`.`phone` AS `UserEntity_phone`, `UserEntity`.`email` AS `UserEntity_email` FROM `User` `UserEntity`
+[2021-04-18T15:38:57.334Z][QUERY]: INSERT INTO `User`(`id`, `fullName`, `number`, `phone`, `email`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: ["Dariusz Cichorski","KbcVcBCw","732191340","string"]
+[2021-04-18T15:41:35.235Z][QUERY]: SELECT `UserEntity`.`id` AS `UserEntity_id`, `UserEntity`.`fullName` AS `UserEntity_fullName`, `UserEntity`.`number` AS `UserEntity_number`, `UserEntity`.`phone` AS `UserEntity_phone`, `UserEntity`.`email` AS `UserEntity_email` FROM `User` `UserEntity` WHERE `UserEntity`.`id` IN (?) -- PARAMETERS: [1]
+[2021-04-18T15:41:35.248Z][QUERY]: UPDATE `User` SET `id` = ?, `fullName` = ?, `number` = ?, `phone` = ?, `email` = ? WHERE `id` IN (?) -- PARAMETERS: [1,"Dariusz Cichorski","KbcVcBCw","732191340","darekcichorski@gmail.com",1]
+[2021-04-18T15:41:47.365Z][QUERY]: SELECT `UserEntity`.`id` AS `UserEntity_id`, `UserEntity`.`fullName` AS `UserEntity_fullName`, `UserEntity`.`number` AS `UserEntity_number`, `UserEntity`.`phone` AS `UserEntity_phone`, `UserEntity`.`email` AS `UserEntity_email` FROM `User` `UserEntity`
+[2021-04-18T15:41:54.223Z][QUERY]: SELECT `UserEntity`.`id` AS `UserEntity_id`, `UserEntity`.`fullName` AS `UserEntity_fullName`, `UserEntity`.`number` AS `UserEntity_number`, `UserEntity`.`phone` AS `UserEntity_phone`, `UserEntity`.`email` AS `UserEntity_email` FROM `User` `UserEntity` WHERE `UserEntity`.`id` IN (?) -- PARAMETERS: ["1"]

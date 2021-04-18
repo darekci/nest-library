@@ -37,3 +37,13 @@ export function createBookEntity(book: Book): BookEntity {
   entity.publisher = book.publisher;
   return entity;
 }
+
+export function createBookFromEntity(entity: BookEntity): Book {
+  const book = new Book(entity.id);
+  book.author = entity.author;
+  book.isbn = entity.isbn;
+  book.publishYear = entity.publishYear;
+  book.publisher = entity.publisher;
+  book.title = entity.title;
+  return book;
+}

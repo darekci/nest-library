@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { BookEntity } from 'src/persistence/books/book-repository/book.entity';
+import { Book } from 'src/domain/books/book';
 import { IBookRepository } from '../book-repository.interface';
 
 export class GetBookQuery {
@@ -10,7 +10,7 @@ export class GetBookQuery {
 export class GetBookHandler implements IQueryHandler<GetBookQuery> {
   constructor(private repository: IBookRepository) {}
 
-  async execute(query: GetBookQuery): Promise<BookEntity> {
+  async execute(query: GetBookQuery): Promise<Book> {
     return this.repository.getBook(query.id);
   }
 }

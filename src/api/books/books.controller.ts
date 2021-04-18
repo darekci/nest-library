@@ -9,16 +9,14 @@ import {
 } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { ApiBody } from '@nestjs/swagger';
-import { CreateBookCommand } from '../../domain/books/commands/create-book.command';
-import { DeleteBookCommand } from '../../domain/books/commands/delete-book.command';
-import { UpdateBookCommand } from '../../domain/books/commands/update-book.command';
+import { CreateBookCommand } from '../../application/books/commands/create-book.command';
+import { DeleteBookCommand } from '../../application/books/commands/delete-book.command';
+import { UpdateBookCommand } from '../../application/books/commands/update-book.command';
 import { Book } from '../../domain/books/book';
-import { GetBookQuery } from '../../domain/books/queries/get-book.query';
-import { GetBooksQuery } from '../../domain/books/queries/get-books.query';
-import { CreateBookDto } from './create-book.dto';
-import { UpdateBookDto } from './update-book.dto';
-import { CreateBookService } from 'src/application/books/create-book.service';
-import { UpdateBookService } from 'src/application/books/update-book.service';
+import { GetBookQuery } from '../../application/books/queries/get-book.query';
+import { GetBooksQuery } from '../../application/books/queries/get-books.query';
+import { CreateBookDto } from '../../application/books/dtos/create-book.dto';
+import { UpdateBookDto } from '../../application/books/dtos/update-book.dto';
 
 @Controller('books')
 export class BooksController {
@@ -37,17 +35,13 @@ export class BooksController {
   @Post()
   @ApiBody({ type: CreateBookDto })
   async create(@Body() book: CreateBookDto): Promise<void> {
-    return this.commandBus.execute(
-      new CreateBookCommand(CreateBookService.prepare(book))
-    );
+    return this.commandBus.execute(new CreateBookCommand(book));
   }
 
   @Put()
   @ApiBody({ type: UpdateBookDto })
   async update(@Body() book: UpdateBookDto): Promise<void> {
-    return this.commandBus.execute(
-      new UpdateBookCommand(UpdateBookService.convert(book))
-    );
+    return this.commandBus.execute(new UpdateBookCommand(book));
   }
 
   @Delete(':id')

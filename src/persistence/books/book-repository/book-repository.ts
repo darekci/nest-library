@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { IBookRepository } from 'src/domain/books/book-repository.interface';
+import { IBookRepository } from 'src/application/books/book-repository.interface';
 import { Book } from 'src/domain/books/book';
 import { EntityManager, EntityRepository } from 'typeorm';
-import { BookEntity, createBookEntity } from './book.entity';
+import {
+  BookEntity,
+  createBookEntity,
+  createBookFromEntity,
+} from './book.entity';
 
 @Injectable()
 @EntityRepository()
@@ -13,8 +17,10 @@ export class BookRepository implements IBookRepository {
     return this.manager.find(BookEntity);
   }
 
-  getBook(id: number): Promise<BookEntity> {
-    return this.manager.findOne(BookEntity, id);
+  getBook(id: number): Promise<Book> {
+    return this.manager.findOne(BookEntity, id).then((entity) => {
+      return createBookFromEntity(entity);
+    });
   }
 
   create(book: Book): void {

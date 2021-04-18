@@ -6,15 +6,10 @@ export class Book {
   }
 
   id: number;
-
   author: string;
-
   title: string;
-
   isbn: string;
-
   publishYear: number;
-
   publisher: string;
 
   withAuthor(author: string): Book {

@@ -7,6 +7,8 @@ import * as ormconfig from './ormconfig';
 import { IBookRepository } from './application/books/book-repository.interface';
 import { BookRepository } from './persistence/books/book-repository/book-repository';
 import { ApplicationModule } from './application/application.module';
+import { UsersModule } from './domain/users/users/users.module';
+import { UserRepositoryModule } from './persistence/users/user-repository/user-repository.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { ApplicationModule } from './application/application.module';
     BooksModule,
     BookRepositoryModule,
     ApplicationModule,
+    UsersModule,
+    UserRepositoryModule,
   ],
   controllers: [],
   providers: [

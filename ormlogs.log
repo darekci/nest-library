@@ -21,3 +21,14 @@
 [2021-04-18T12:36:24.781Z][QUERY]: DELETE FROM `Book` WHERE `id` = ? -- PARAMETERS: [2]
 [2021-04-18T12:36:24.823Z][QUERY]: COMMIT
 [2021-04-18T12:36:28.667Z][QUERY]: SELECT `BookEntity`.`id` AS `BookEntity_id`, `BookEntity`.`author` AS `BookEntity_author`, `BookEntity`.`title` AS `BookEntity_title`, `BookEntity`.`isbn` AS `BookEntity_isbn`, `BookEntity`.`publishYear` AS `BookEntity_publishYear`, `BookEntity`.`publisher` AS `BookEntity_publisher` FROM `Book` `BookEntity`
+[2021-04-18T12:52:22.092Z][QUERY]: SELECT * FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_SCHEMA` = 'library' AND `TABLE_NAME` = 'migrations'
+[2021-04-18T12:52:22.105Z][QUERY]: SELECT * FROM `library`.`migrations` `migrations` ORDER BY `id` DESC
+[2021-04-18T12:52:22.122Z]1 migrations are already loaded in the database.
+[2021-04-18T12:52:22.122Z]2 migrations were found in the source code.
+[2021-04-18T12:52:22.133Z]BookTable1618677904872 is the last executed migration. It was executed on Sat Apr 17 2021 18:45:04 GMT+0200 (GMT+02:00).
+[2021-04-18T12:52:22.134Z]1 migrations are new migrations that needs to be executed.
+[2021-04-18T12:52:22.134Z][QUERY]: START TRANSACTION
+[2021-04-18T12:52:22.140Z][QUERY]: CREATE TABLE `User` (`id` int NOT NULL AUTO_INCREMENT, `fullName` varchar(100) NOT NULL, `number` varchar(8) NOT NULL, `phone` varchar(20) NOT NULL, `email` varchar(100) NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB
+[2021-04-18T12:52:22.259Z][QUERY]: INSERT INTO `library`.`migrations`(`timestamp`, `name`) VALUES (?, ?) -- PARAMETERS: [1618750316238,"UserTable1618750316238"]
+[2021-04-18T12:52:22.272Z]Migration UserTable1618750316238 has been executed successfully.
+[2021-04-18T12:52:22.273Z][QUERY]: COMMIT

@@ -1,4 +1,4 @@
-import { User } from 'src/domain/users/users/user';
+import { User } from 'src/domain/users/user';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'User' })

@@ -1,4 +1,4 @@
-import { User } from 'src/domain/users/users/user';
+import { User } from 'src/domain/users/user';
 import { UserEntity } from 'src/persistence/users/user-repository/user.entity';
 
 export abstract class IUserRepository {

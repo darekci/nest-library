@@ -16,7 +16,7 @@ import { CreateUserDto } from 'src/application/users/dtos/create-user.dto';
 import { UpdateUserDto } from 'src/application/users/dtos/update-user.dto';
 import { GetUserQuery } from 'src/application/users/queries/get-user.query';
 import { GetUsersQuery } from 'src/application/users/queries/get-users.query';
-import { User } from 'src/domain/users/users/user';
+import { User } from 'src/domain/users/user';
 
 @Controller('users')
 export class UsersController {

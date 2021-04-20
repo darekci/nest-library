@@ -9,6 +9,8 @@ import { BookRepository } from './persistence/books/book-repository/book-reposit
 import { ApplicationModule } from './application/application.module';
 import { UsersModule } from './domain/users/users.module';
 import { UserRepositoryModule } from './persistence/users/user-repository/user-repository.module';
+import { ReservationsModule } from './domain/reservations/reservations.module';
+import { ReservationRepositoryModule } from './persistence/reservations/reservation-repository/reservation-repository.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { UserRepositoryModule } from './persistence/users/user-repository/user-r
     ApplicationModule,
     UsersModule,
     UserRepositoryModule,
+    ReservationsModule,
+    ReservationRepositoryModule,
   ],
   controllers: [],
   providers: [

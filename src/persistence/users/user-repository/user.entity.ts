@@ -1,5 +1,6 @@
 import { User } from 'src/domain/users/user';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ReservationEntity } from 'src/persistence/reservations/reservation-repository/reservation.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'User' })
 export class UserEntity {
@@ -23,6 +24,9 @@ export class UserEntity {
 
   @Column({ type: 'varchar', length: 100 })
   email: string;
+
+  @OneToMany(() => ReservationEntity, (res) => res.user)
+  reservations: ReservationEntity[];
 }
 
 export function createUserEntity(user: User): UserEntity {

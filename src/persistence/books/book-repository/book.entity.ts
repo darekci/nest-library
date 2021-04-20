@@ -1,5 +1,6 @@
 import { Book } from 'src/domain/books/book';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { ReservationEntity } from 'src/persistence/reservations/reservation-repository/reservation.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'Book' })
 export class BookEntity {
@@ -26,6 +27,9 @@ export class BookEntity {
 
   @Column({ type: 'varchar', length: 100, nullable: true })
   publisher: string;
+
+  @OneToMany(() => ReservationEntity, (res) => res.book)
+  reservations: ReservationEntity[];
 }
 
 export function createBookEntity(book: Book): BookEntity {

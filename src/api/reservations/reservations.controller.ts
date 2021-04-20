@@ -1,5 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { ApiBody } from '@nestjs/swagger';
+import { CreateReservationCommand } from 'src/application/reservations/commands/create-reservation.command';
+import { CreateReservationDto } from 'src/application/reservations/dtos/create-reservation.dto';
 import { GetActiveReservationsQuery } from 'src/application/reservations/queries/get-active-reservations.query';
 import { ReservationEntity } from 'src/persistence/reservations/reservation-repository/reservation.entity';
 
@@ -10,5 +13,11 @@ export class ReservationsController {
   @Get('active')
   async getActiveReservations(): Promise<ReservationEntity[]> {
     return this.queryBus.execute(new GetActiveReservationsQuery());
+  }
+
+  @Post()
+  @ApiBody({ type: CreateReservationDto })
+  async create(@Body() reservation: CreateReservationDto): Promise<void> {
+    return this.commandBus.execute(new CreateReservationCommand(reservation));
   }
 }

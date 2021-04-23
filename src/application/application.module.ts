@@ -13,6 +13,7 @@ import { GetUsersHandler } from './users/queries/get-users.query';
 import { IBookRepository } from './books/book-repository.interface';
 import { IReservationRepository } from './reservations/reservation-repository.interface';
 import { IUserRepository } from './users/user-repository.interface';
+import { MarkAsArchivedHandler } from './reservations/commands/mark-as-archived.command';
 import { Module } from '@nestjs/common';
 import { ReservationRepository } from 'src/persistence/reservations/reservation-repository/reservation-repository';
 import { UpdateBookHandler } from './books/commands/update-book.command';
@@ -35,6 +36,7 @@ export const CommandHandlers = [
   UpdateUserHandler,
   DeleteUserHandler,
   CreateReservationHandler,
+  MarkAsArchivedHandler,
 ];
 
 @Module({

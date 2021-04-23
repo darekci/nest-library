@@ -13,6 +13,7 @@ export class Reservation {
   user: User;
   fromDate: Date;
   toDate: Date;
+  returnDate: Date;
 
   withBook(book: Book): Reservation {
     this.book = book;

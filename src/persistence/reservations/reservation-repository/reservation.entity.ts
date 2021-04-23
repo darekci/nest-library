@@ -32,6 +32,9 @@ export class ReservationEntity {
 
   @Column({ type: 'datetime' })
   toDate: Date;
+
+  @Column({ type: 'datetime', nullable: true })
+  returnDate: Date;
 }
 
 export function createReservationEntity(
@@ -40,7 +43,18 @@ export function createReservationEntity(
   const entity = new ReservationEntity(reservation.id);
   entity.fromDate = reservation.fromDate;
   entity.toDate = reservation.toDate;
+  entity.returnDate = reservation.returnDate;
   entity.book = createBookEntity(reservation.book);
   entity.user = createUserEntity(reservation.user);
   return entity;
+}
+
+export function createReservationFromEntity(
+  entity: ReservationEntity
+): Reservation {
+  const reservation = new Reservation(entity.id);
+  reservation.fromDate = entity.fromDate;
+  reservation.toDate = entity.toDate;
+  reservation.returnDate = entity.returnDate;
+  return reservation;
 }

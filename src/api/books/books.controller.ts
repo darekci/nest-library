@@ -17,6 +17,7 @@ import { GetBookQuery } from '../../application/books/queries/get-book.query';
 import { GetBooksQuery } from '../../application/books/queries/get-books.query';
 import { CreateBookDto } from '../../application/books/dtos/create-book.dto';
 import { UpdateBookDto } from '../../application/books/dtos/update-book.dto';
+import { GetAvailableBooksQuery } from 'src/application/books/queries/get-available-books.query';
 
 @Controller('books')
 export class BooksController {
@@ -25,6 +26,11 @@ export class BooksController {
   @Get()
   async findAll(): Promise<Book[]> {
     return this.queryBus.execute(new GetBooksQuery());
+  }
+
+  @Get('available')
+  async findAllAvailable(): Promise<Book[]> {
+    return this.queryBus.execute(new GetAvailableBooksQuery());
   }
 
   @Get(':id')

@@ -6,6 +6,7 @@ import { CreateUserHandler } from './users/commands/create-user.command';
 import { DeleteBookHandler } from './books/commands/delete-book.command';
 import { DeleteUserHandler } from './users/commands/delete-user.command';
 import { GetActiveReservationsHandler } from './reservations/queries/get-active-reservations.query';
+import { GetAvailableBooksHandler } from './books/queries/get-available-books.query';
 import { GetBookHandler } from './books/queries/get-book.query';
 import { GetBooksHandler } from './books/queries/get-books.query';
 import { GetUserHandler } from './users/queries/get-user.query';
@@ -22,6 +23,7 @@ import { UserRepository } from 'src/persistence/users/user-repository/user-repos
 
 export const QueryHandlers = [
   GetBooksHandler,
+  GetAvailableBooksHandler,
   GetBookHandler,
   GetUsersHandler,
   GetUserHandler,

@@ -42,6 +42,7 @@ export class ReservationRepository implements IReservationRepository {
       where: {
         fromDate: LessThan(new Date()),
         toDate: MoreThan(new Date()),
+        returnDate: IsNull(),
         book: {
           id: bookId,
         },
